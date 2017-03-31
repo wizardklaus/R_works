@@ -1,0 +1,13 @@
+library(sqldf)
+sqldf("SELECT DISTINCT Species FROM iris")
+sqldf("SELECT AVG(Sepal_Length) FROM iris WHERE Species='setosa'")
+aaa1 <- data.frame(iris)
+colnames(aaa1) <- gsub("\\.","_",colnames(aaa1))
+head(aaa1)
+? gsub
+aaa2 <- data.frame(iris)
+colnames(aaa2) <- gsub(".","_",colnames(aaa2))
+head(aaa2)
+sqldf("SELECT Petal_Length, AVG(Sepal_Length) FROM aaa1 WHERE Species='setosa' GROUP BY Sepal_Length")
+adply(iris,1,function(row){row$Sepal.Length>=5.0&row$Species=='setosa'})
+library(plyr)
